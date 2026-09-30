@@ -1,0 +1,1195 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Health Information | MediCare Plus</title>
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "DM Sans", sans-serif;
+            background: #f4f9f9;
+            color: #183b43;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        .navbar {
+            background: rgba(255,255,255,0.98);
+            box-shadow: 0 4px 20px rgba(20,70,75,0.08);
+            padding: 15px 0;
+        }
+
+        .navbar-brand {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #087f8c !important;
+        }
+
+        .navbar-brand i {
+            margin-right: 7px;
+        }
+
+        .nav-link {
+            color: #38555b !important;
+            font-weight: 500;
+            margin: 0 5px;
+            transition: 0.3s;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: #087f8c !important;
+        }
+
+        /* ================= HERO ================= */
+
+        .page-hero {
+            min-height: 330px;
+            display: flex;
+            align-items: center;
+
+            background:
+                linear-gradient(
+                    rgba(5,55,65,0.80),
+                    rgba(5,55,65,0.80)
+                ),
+                url("https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=1800&q=85")
+                center/cover;
+
+            color: white;
+        }
+
+        .hero-content {
+            max-width: 780px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 8px 16px;
+            border-radius: 30px;
+            background: rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.25);
+            margin-bottom: 18px;
+        }
+
+        .hero-content h1 {
+            font-family: "Playfair Display", serif;
+            font-size: 3.2rem;
+            margin-bottom: 15px;
+        }
+
+        .hero-content p {
+            font-size: 1.08rem;
+            color: #e0eeee;
+            line-height: 1.7;
+        }
+
+        /* ================= MAIN ================= */
+
+        .main-section {
+            padding: 70px 0;
+        }
+
+        .section-title {
+            font-family: "Playfair Display", serif;
+            font-size: 2.3rem;
+            color: #123e47;
+        }
+
+        .section-subtitle {
+            color: #71878c;
+        }
+
+        /* ================= PROFILE CARD ================= */
+
+        .profile-card {
+            background: white;
+            border-radius: 22px;
+            padding: 30px;
+            border: 1px solid #e4eeee;
+            box-shadow: 0 15px 40px rgba(20,70,75,0.08);
+            height: 100%;
+        }
+
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid #e8eeee;
+            margin-bottom: 25px;
+        }
+
+        .profile-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 18px;
+            background: #e1f5f5;
+            color: #087f8c;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+
+        .profile-header h3 {
+            margin: 0;
+            font-weight: 700;
+            color: #153f47;
+        }
+
+        .profile-header p {
+            margin: 4px 0 0;
+            color: #809397;
+            font-size: 0.88rem;
+        }
+
+        /* ================= INFO ITEMS ================= */
+
+        .info-item {
+            padding: 15px 0;
+            border-bottom: 1px solid #edf2f2;
+        }
+
+        .info-item:last-child {
+            border-bottom: none;
+        }
+
+        .info-label {
+            display: block;
+            color: #849699;
+            font-size: 0.78rem;
+            margin-bottom: 4px;
+        }
+
+        .info-value {
+            color: #274a52;
+            font-weight: 600;
+            font-size: 0.94rem;
+        }
+
+        /* ================= BLOOD CARD ================= */
+
+        .blood-card {
+            background: #123f47;
+            border-radius: 22px;
+            padding: 30px;
+            color: white;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .blood-card::before {
+            content: "";
+            position: absolute;
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            right: -80px;
+            top: -80px;
+            background: rgba(255,255,255,0.05);
+        }
+
+        .blood-icon {
+            width: 55px;
+            height: 55px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 15px;
+            background: rgba(255,255,255,0.12);
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .blood-card h3 {
+            font-family: "Playfair Display", serif;
+            font-size: 1.8rem;
+        }
+
+        .blood-type {
+            font-size: 4rem;
+            font-weight: 700;
+            margin: 10px 0;
+            color: #8ce1e1;
+        }
+
+        .blood-card p {
+            color: #c5dcdf;
+            line-height: 1.7;
+        }
+
+        /* ================= MEDICAL SUMMARY ================= */
+
+        .summary-section {
+            margin-top: 40px;
+        }
+
+        .medical-card {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            border: 1px solid #e5eeee;
+            height: 100%;
+            box-shadow: 0 10px 30px rgba(20,70,75,0.06);
+            transition: 0.3s;
+        }
+
+        .medical-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .medical-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 13px;
+            background: #e6f6f6;
+            color: #087f8c;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            margin-bottom: 18px;
+        }
+
+        .medical-card h5 {
+            color: #173f47;
+            font-weight: 700;
+        }
+
+        .medical-card p {
+            color: #71878c;
+            font-size: 0.9rem;
+            line-height: 1.7;
+            margin-bottom: 0;
+        }
+
+        /* ================= APPOINTMENT INFO ================= */
+
+        .appointment-box {
+            margin-top: 40px;
+            background: white;
+            border-radius: 22px;
+            padding: 30px;
+            border: 1px solid #e5eeee;
+            box-shadow: 0 12px 35px rgba(20,70,75,0.07);
+        }
+
+        .appointment-heading {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 25px;
+        }
+
+        .appointment-heading-icon {
+            width: 50px;
+            height: 50px;
+            background: #e5f6f6;
+            color: #087f8c;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+        }
+
+        .appointment-heading h3 {
+            font-family: "Playfair Display", serif;
+            margin: 0;
+            color: #123e47;
+        }
+
+        .appointment-detail {
+            background: #f7fbfb;
+            padding: 18px;
+            border-radius: 12px;
+            height: 100%;
+        }
+
+        .appointment-detail span {
+            display: block;
+            color: #85999d;
+            font-size: 0.76rem;
+            margin-bottom: 5px;
+        }
+
+        .appointment-detail strong {
+            color: #31535a;
+        }
+
+        /* STATUS */
+
+        .status {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #e5f7ed;
+            color: #21804d;
+            padding: 7px 13px;
+            border-radius: 20px;
+            font-size: 0.78rem;
+            font-weight: 700;
+        }
+
+        /* ================= HEALTH BANNER ================= */
+
+        .health-banner {
+            margin-top: 40px;
+            border-radius: 22px;
+            overflow: hidden;
+            background: #123f47;
+            color: white;
+        }
+
+        .health-banner img {
+            width: 100%;
+            height: 100%;
+            min-height: 280px;
+            object-fit: cover;
+        }
+
+        .health-banner-content {
+            padding: 40px;
+        }
+
+        .health-banner-content h3 {
+            font-family: "Playfair Display", serif;
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .health-banner-content p {
+            color: #c8dddf;
+            line-height: 1.8;
+        }
+
+        .health-points {
+            list-style: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+
+        .health-points li {
+            margin-bottom: 11px;
+            color: #d5e6e8;
+        }
+
+        .health-points i {
+            color: #78dddd;
+            margin-right: 8px;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: #0b3037;
+            color: #c7d9dc;
+            padding: 45px 0 20px;
+        }
+
+        .footer-brand {
+            color: white;
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .footer-title {
+            color: white;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 9px;
+        }
+
+        .footer-links a {
+            color: #c7d9dc;
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: #72d8d8;
+        }
+
+        .copyright {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: 30px;
+            padding-top: 20px;
+            text-align: center;
+            font-size: 0.82rem;
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 991px) {
+
+            .navbar-nav {
+                padding-top: 15px;
+            }
+
+            .nav-link {
+                margin: 5px 0;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .blood-card {
+                margin-top: 30px;
+            }
+
+        }
+
+        @media (max-width: 576px) {
+
+            .page-hero {
+                min-height: 280px;
+            }
+
+            .hero-content h1 {
+                font-size: 2.1rem;
+            }
+
+            .main-section {
+                padding: 45px 0;
+            }
+
+            .section-title {
+                font-size: 1.85rem;
+            }
+
+            .profile-card,
+            .blood-card,
+            .appointment-box {
+                padding: 22px;
+                border-radius: 17px;
+            }
+
+            .health-banner-content {
+                padding: 25px;
+            }
+
+            .health-banner-content h3 {
+                font-size: 1.6rem;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- ================= NAVBAR ================= -->
+
+<nav class="navbar navbar-expand-lg sticky-top">
+
+    <div class="container">
+
+        <a class="navbar-brand" href="index.html">
+            <i class="bi bi-heart-pulse-fill"></i>
+            MediCare Plus
+        </a>
+
+
+        <button class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#mainNavbar">
+
+            <span class="navbar-toggler-icon"></span>
+
+        </button>
+
+
+        <div class="collapse navbar-collapse" id="mainNavbar">
+
+            <ul class="navbar-nav ms-auto align-items-lg-center">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">
+                        Home
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="registration.html">
+                        Patient Registration
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="appointments.html">
+                        Appointments
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link active" href="health-information.html">
+                        Health Information
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="services.html">
+                        Services
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="technologies.html">
+                        Technologies
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+
+<!-- ================= HERO ================= -->
+
+<section class="page-hero">
+
+    <div class="container">
+
+        <div class="hero-content">
+
+            <span class="hero-badge">
+                <i class="bi bi-file-medical-fill me-2"></i>
+                Personal Health Dashboard
+            </span>
+
+            <h1>
+                Your Health Information
+            </h1>
+
+            <p>
+                Access important patient details, appointment information
+                and health concerns in one organized digital portal.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= MAIN ================= -->
+
+<section class="main-section">
+
+    <div class="container">
+
+        <div class="text-center mb-5">
+
+            <h2 class="section-title">
+                Patient Health Profile
+            </h2>
+
+            <p class="section-subtitle">
+                A clear overview of your registered healthcare information.
+            </p>
+
+        </div>
+
+
+
+        <!-- PROFILE + BLOOD GROUP -->
+
+        <div class="row g-4">
+
+            <!-- PATIENT DETAILS -->
+
+            <div class="col-lg-8">
+
+                <div class="profile-card">
+
+                    <div class="profile-header">
+
+                        <div class="profile-icon">
+                            <i class="bi bi-person-heart"></i>
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                Ananya Krishnan
+                            </h3>
+
+                            <p>
+                                Patient ID: MC-2026-1042
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="row">
+
+                        <div class="col-md-6">
+
+                            <div class="info-item">
+
+                                <span class="info-label">
+                                    Patient Name
+                                </span>
+
+                                <div class="info-value">
+                                    Ananya Krishnan
+                                </div>
+
+                            </div>
+
+
+                            <div class="info-item">
+
+                                <span class="info-label">
+                                    Blood Group
+                                </span>
+
+                                <div class="info-value">
+                                    O Positive
+                                </div>
+
+                            </div>
+
+
+                            <div class="info-item">
+
+                                <span class="info-label">
+                                    Department
+                                </span>
+
+                                <div class="info-value">
+                                    General Medicine
+                                </div>
+
+                            </div>
+
+
+                            <div class="info-item">
+
+                                <span class="info-label">
+                                    Doctor
+                                </span>
+
+                                <div class="info-value">
+                                    Dr. Meera Krishnan
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="col-md-6">
+
+                            <div class="info-item">
+
+                                <span class="info-label">
+                                    Appointment Date
+                                </span>
+
+                                <div class="info-value">
+                                    12 October 2026
+                                </div>
+
+                            </div>
+
+
+                            <div class="info-item">
+
+                                <span class="info-label">
+                                    Appointment Time
+                                </span>
+
+                                <div class="info-value">
+                                    04:00 PM
+                                </div>
+
+                            </div>
+
+
+                            <div class="info-item">
+
+                                <span class="info-label">
+                                    Patient Category
+                                </span>
+
+                                <div class="info-value">
+                                    Regular Consultation
+                                </div>
+
+                            </div>
+
+
+                            <div class="info-item">
+
+                                <span class="info-label">
+                                    Appointment Status
+                                </span>
+
+                                <div class="info-value mt-1">
+
+                                    <span class="status">
+                                        <i class="bi bi-check-circle-fill"></i>
+                                        Confirmed
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- BLOOD GROUP -->
+
+            <div class="col-lg-4">
+
+                <div class="blood-card">
+
+                    <div class="blood-icon">
+                        <i class="bi bi-droplet-fill"></i>
+                    </div>
+
+                    <h3>
+                        Blood Group
+                    </h3>
+
+                    <div class="blood-type">
+                        O+
+                    </div>
+
+                    <p>
+                        Your registered blood group is displayed here
+                        for quick reference during healthcare visits.
+                    </p>
+
+                    <hr style="border-color:rgba(255,255,255,0.15);">
+
+                    <small>
+                        <i class="bi bi-info-circle me-1"></i>
+                        Please inform medical staff if this information changes.
+                    </small>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ================= MEDICAL SUMMARY ================= -->
+
+        <div class="summary-section">
+
+            <div class="text-center mb-4">
+
+                <h2 class="section-title">
+                    Health Summary
+                </h2>
+
+                <p class="section-subtitle">
+                    Important information related to your current consultation.
+                </p>
+
+            </div>
+
+
+            <div class="row g-4">
+
+                <div class="col-md-6 col-lg-4">
+
+                    <div class="medical-card">
+
+                        <div class="medical-icon">
+                            <i class="bi bi-activity"></i>
+                        </div>
+
+                        <h5>
+                            Symptoms / Health Concern
+                        </h5>
+
+                        <p>
+                            Patient has reported mild fatigue and occasional
+                            headaches. Further consultation with the doctor
+                            is scheduled for evaluation.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-6 col-lg-4">
+
+                    <div class="medical-card">
+
+                        <div class="medical-icon">
+                            <i class="bi bi-hospital"></i>
+                        </div>
+
+                        <h5>
+                            Department
+                        </h5>
+
+                        <p>
+                            General Medicine provides evaluation and
+                            consultation for common health concerns and
+                            routine medical conditions.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-6 col-lg-4">
+
+                    <div class="medical-card">
+
+                        <div class="medical-icon">
+                            <i class="bi bi-person-badge"></i>
+                        </div>
+
+                        <h5>
+                            Assigned Doctor
+                        </h5>
+
+                        <p>
+                            Dr. Meera Krishnan is assigned for the upcoming
+                            consultation and will review the patient's
+                            reported health concerns.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ================= APPOINTMENT DETAILS ================= -->
+
+        <div class="appointment-box">
+
+            <div class="appointment-heading">
+
+                <div class="appointment-heading-icon">
+                    <i class="bi bi-calendar2-heart"></i>
+                </div>
+
+                <div>
+
+                    <h3>
+                        Current Appointment
+                    </h3>
+
+                    <small class="text-muted">
+                        Your latest scheduled healthcare consultation
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="row g-3">
+
+                <div class="col-md-6 col-lg-3">
+
+                    <div class="appointment-detail">
+
+                        <span>
+                            Doctor
+                        </span>
+
+                        <strong>
+                            Dr. Meera Krishnan
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-6 col-lg-3">
+
+                    <div class="appointment-detail">
+
+                        <span>
+                            Department
+                        </span>
+
+                        <strong>
+                            General Medicine
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-6 col-lg-3">
+
+                    <div class="appointment-detail">
+
+                        <span>
+                            Date & Time
+                        </span>
+
+                        <strong>
+                            12 Oct 2026<br>
+                            04:00 PM
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-6 col-lg-3">
+
+                    <div class="appointment-detail">
+
+                        <span>
+                            Status
+                        </span>
+
+                        <strong>
+
+                            <span class="status">
+                                Confirmed
+                            </span>
+
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ================= HEALTH BANNER ================= -->
+
+        <div class="health-banner">
+
+            <div class="row g-0 align-items-center">
+
+                <div class="col-lg-5">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=1000&q=85"
+                        alt="Doctor discussing healthcare with patient">
+
+                </div>
+
+
+                <div class="col-lg-7">
+
+                    <div class="health-banner-content">
+
+                        <h3>
+                            Keep Your Health Information Updated
+                        </h3>
+
+                        <p>
+                            Accurate patient information helps healthcare
+                            professionals understand your needs and provide
+                            appropriate care during consultations.
+                        </p>
+
+
+                        <ul class="health-points">
+
+                            <li>
+                                <i class="bi bi-check-circle-fill"></i>
+                                Keep your contact information current
+                            </li>
+
+                            <li>
+                                <i class="bi bi-check-circle-fill"></i>
+                                Inform doctors about relevant symptoms
+                            </li>
+
+                            <li>
+                                <i class="bi bi-check-circle-fill"></i>
+                                Carry previous medical reports when required
+                            </li>
+
+                            <li>
+                                <i class="bi bi-check-circle-fill"></i>
+                                Review appointment details before visiting
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <div class="container">
+
+        <div class="row g-4">
+
+            <div class="col-lg-5">
+
+                <div class="footer-brand">
+                    <i class="bi bi-heart-pulse-fill me-2"></i>
+                    MediCare Plus
+                </div>
+
+                <p>
+                    A modern healthcare appointment and patient portal
+                    designed to make healthcare management simpler,
+                    faster and more accessible.
+                </p>
+
+            </div>
+
+
+            <div class="col-md-3">
+
+                <div class="footer-title">
+                    Quick Links
+                </div>
+
+                <ul class="footer-links">
+
+                    <li>
+                        <a href="index.html">Home</a>
+                    </li>
+
+                    <li>
+                        <a href="registration.html">Registration</a>
+                    </li>
+
+                    <li>
+                        <a href="appointments.html">Appointments</a>
+                    </li>
+
+                    <li>
+                        <a href="health-information.html">
+                            Health Information
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <div class="col-md-4">
+
+                <div class="footer-title">
+                    Contact
+                </div>
+
+                <p>
+                    <i class="bi bi-geo-alt me-2"></i>
+                    24 Healthcare Avenue, Chennai
+                </p>
+
+                <p>
+                    <i class="bi bi-telephone me-2"></i>
+                    +91 98765 43210
+                </p>
+
+                <p>
+                    <i class="bi bi-envelope me-2"></i>
+                    care@medicareplus.com
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="copyright">
+            © 2026 MediCare Plus. All Rights Reserved.
+        </div>
+
+    </div>
+
+</footer>
+
+
+<!-- Bootstrap JS -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
+```

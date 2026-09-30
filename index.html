@@ -1,0 +1,1633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MediCare Plus | Healthcare Patient Portal</title>
+
+    <!-- Bootstrap 5 -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
+        rel="stylesheet">
+
+
+    <style>
+
+        /* =========================================
+           GLOBAL
+        ========================================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "DM Sans", sans-serif;
+            background: #f6fbfc;
+            color: #20383d;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .container {
+            max-width: 1180px;
+        }
+
+
+        /* =========================================
+           NAVBAR
+        ========================================= */
+
+        .navbar {
+            min-height: 78px;
+            background: rgba(255,255,255,0.96);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid #e2eef0;
+        }
+
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .brand-icon {
+            width: 43px;
+            height: 43px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            background: linear-gradient(135deg,#087f8c,#35b9c1);
+            border-radius: 13px;
+            font-size: 21px;
+            box-shadow: 0 8px 20px rgba(8,127,140,.20);
+        }
+
+        .brand-name {
+            display: flex;
+            flex-direction: column;
+            line-height: 1;
+        }
+
+        .brand-name strong {
+            font-family: "Playfair Display", serif;
+            font-size: 21px;
+            color: #102d34;
+        }
+
+        .brand-name small {
+            margin-top: 4px;
+            color: #087f8c;
+            font-size: 8px;
+            font-weight: 800;
+            letter-spacing: 2px;
+        }
+
+        .nav-link {
+            margin: 0 5px;
+            color: #536a70 !important;
+            font-size: 13px;
+            font-weight: 600;
+            transition: .3s;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: #087f8c !important;
+        }
+
+        .navbar-toggler {
+            border: none;
+            font-size: 27px;
+        }
+
+        .navbar-toggler:focus {
+            box-shadow: none;
+        }
+
+        .nav-button {
+            padding: 11px 19px;
+            color: white;
+            background: #102d34;
+            border-radius: 10px;
+            font-size: 12px;
+            font-weight: 700;
+            transition: .3s;
+        }
+
+        .nav-button:hover {
+            color: white;
+            background: #087f8c;
+            transform: translateY(-2px);
+        }
+
+
+        /* =========================================
+           HERO
+        ========================================= */
+
+        .hero {
+            position: relative;
+            min-height: 720px;
+            padding: 150px 0 90px;
+            overflow: hidden;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(241,249,250,.98) 0%,
+                    rgba(241,249,250,.91) 45%,
+                    rgba(241,249,250,.38) 100%
+                ),
+                url("https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1800&q=85");
+
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+
+            padding: 8px 13px;
+
+            color: #087f8c;
+            background: rgba(8,127,140,.09);
+
+            border: 1px solid rgba(8,127,140,.13);
+            border-radius: 30px;
+
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+        }
+
+        .hero h1 {
+            max-width: 700px;
+            margin-top: 22px;
+
+            color: #102d34;
+
+            font-family: "Playfair Display", serif;
+            font-size: clamp(48px,6vw,76px);
+            line-height: 1.04;
+            letter-spacing: -2px;
+        }
+
+        .hero h1 span {
+            color: #087f8c;
+        }
+
+        .hero-description {
+            max-width: 570px;
+            margin: 25px 0;
+
+            color: #64787d;
+            font-size: 16px;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 13px;
+            flex-wrap: wrap;
+        }
+
+        .primary-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 14px 22px;
+
+            color: white;
+            background: linear-gradient(135deg,#087f8c,#24aab3);
+
+            border-radius: 11px;
+
+            font-size: 13px;
+            font-weight: 700;
+
+            box-shadow: 0 10px 25px rgba(8,127,140,.20);
+
+            transition: .3s;
+        }
+
+        .primary-btn:hover {
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(8,127,140,.25);
+        }
+
+        .outline-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 14px 22px;
+
+            color: #20383d;
+            background: rgba(255,255,255,.8);
+
+            border: 1px solid #c9dfe2;
+            border-radius: 11px;
+
+            font-size: 13px;
+            font-weight: 700;
+
+            transition: .3s;
+        }
+
+        .outline-btn:hover {
+            color: white;
+            background: #102d34;
+            border-color: #102d34;
+        }
+
+
+        /* =========================================
+           HERO INFO CARD
+        ========================================= */
+
+        .hero-info-card {
+            max-width: 390px;
+            margin-left: auto;
+
+            padding: 22px;
+
+            background: rgba(255,255,255,.90);
+            backdrop-filter: blur(12px);
+
+            border: 1px solid rgba(255,255,255,.8);
+            border-radius: 22px;
+
+            box-shadow: 0 20px 50px rgba(25,65,72,.15);
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 235px;
+
+            object-fit: cover;
+
+            border-radius: 16px;
+        }
+
+        .doctor-info {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+
+            margin-top: 18px;
+        }
+
+        .doctor-icon {
+            width: 46px;
+            height: 46px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            color: #087f8c;
+            background: #e9f7f8;
+
+            border-radius: 12px;
+
+            font-size: 21px;
+        }
+
+        .doctor-info small {
+            display: block;
+            color: #819398;
+            font-size: 8px;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .doctor-info strong {
+            display: block;
+            margin-top: 3px;
+            color: #102d34;
+            font-size: 14px;
+        }
+
+        .doctor-info span {
+            color: #718287;
+            font-size: 10px;
+        }
+
+
+        /* =========================================
+           QUICK STATS
+        ========================================= */
+
+        .stats {
+            padding: 30px 0;
+            background: white;
+            border-bottom: 1px solid #e3eef0;
+        }
+
+        .stat-card {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+        }
+
+        .stat-icon {
+            width: 48px;
+            height: 48px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            color: #087f8c;
+            background: #eaf7f8;
+
+            border-radius: 13px;
+
+            font-size: 20px;
+        }
+
+        .stat-card strong {
+            display: block;
+            color: #102d34;
+            font-size: 21px;
+        }
+
+        .stat-card span {
+            display: block;
+            color: #7b8d91;
+            font-size: 10px;
+        }
+
+
+        /* =========================================
+           SECTION
+        ========================================= */
+
+        .section {
+            padding: 95px 0;
+        }
+
+        .section-label {
+            display: block;
+            margin-bottom: 10px;
+
+            color: #087f8c;
+
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 2px;
+        }
+
+        .section-title {
+            color: #102d34;
+            font-family: "Playfair Display", serif;
+            font-size: clamp(33px,4vw,48px);
+            line-height: 1.1;
+        }
+
+        .section-title span {
+            color: #087f8c;
+        }
+
+        .section-description {
+            max-width: 650px;
+            margin: 14px auto 0;
+
+            color: #718287;
+            font-size: 14px;
+        }
+
+
+        /* =========================================
+           SERVICE CARDS
+        ========================================= */
+
+        .service-card {
+            height: 100%;
+            padding: 30px;
+
+            background: white;
+
+            border: 1px solid #e2edef;
+            border-radius: 18px;
+
+            transition: .35s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 18px 45px rgba(20,70,78,.10);
+        }
+
+        .service-icon {
+            width: 55px;
+            height: 55px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            margin-bottom: 22px;
+
+            color: #087f8c;
+            background: #e9f7f8;
+
+            border-radius: 15px;
+
+            font-size: 23px;
+        }
+
+        .service-icon.purple {
+            color: #695fd5;
+            background: #f0efff;
+        }
+
+        .service-icon.orange {
+            color: #d88b14;
+            background: #fff5df;
+        }
+
+        .service-icon.green {
+            color: #239653;
+            background: #eaf8ef;
+        }
+
+        .service-card h3 {
+            color: #17343a;
+            font-size: 18px;
+        }
+
+        .service-card p {
+            min-height: 70px;
+            margin: 10px 0 18px;
+
+            color: #718287;
+            font-size: 12px;
+            line-height: 1.7;
+        }
+
+        .service-card a {
+            color: #087f8c;
+            font-size: 12px;
+            font-weight: 800;
+        }
+
+
+        /* =========================================
+           FEATURE IMAGE SECTION
+        ========================================= */
+
+        .feature-section {
+            background: #edf7f8;
+        }
+
+        .feature-image {
+            width: 100%;
+            height: 430px;
+
+            object-fit: cover;
+
+            border-radius: 24px;
+
+            box-shadow: 0 20px 50px rgba(20,70,78,.12);
+        }
+
+        .feature-content {
+            padding-left: 25px;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 25px 0;
+        }
+
+        .feature-list li {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+
+            margin-bottom: 13px;
+
+            color: #61777c;
+            font-size: 13px;
+        }
+
+        .feature-list i {
+            color: #087f8c;
+            font-size: 17px;
+        }
+
+
+        /* =========================================
+           CTA
+        ========================================= */
+
+        .cta {
+            padding: 35px 0 90px;
+            background: #edf7f8;
+        }
+
+        .cta-box {
+            padding: 50px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+
+            color: white;
+
+            background:
+                linear-gradient(
+                    120deg,
+                    #073b43,
+                    #087f8c
+                );
+
+            border-radius: 24px;
+
+            overflow: hidden;
+        }
+
+        .cta-box small {
+            color: #9de2e5;
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 2px;
+        }
+
+        .cta-box h2 {
+            margin-top: 8px;
+
+            font-family: "Playfair Display", serif;
+            font-size: clamp(30px,4vw,44px);
+        }
+
+        .cta-box p {
+            margin-top: 8px;
+            color: #c6e0e2;
+            font-size: 13px;
+        }
+
+        .white-btn {
+            padding: 13px 22px;
+
+            color: #102d34;
+            background: white;
+
+            border-radius: 10px;
+
+            font-size: 13px;
+            font-weight: 700;
+
+            white-space: nowrap;
+        }
+
+        .white-btn:hover {
+            color: #087f8c;
+        }
+
+
+        /* =========================================
+           FOOTER
+        ========================================= */
+
+        footer {
+            padding: 65px 0 0;
+            color: #a8bec2;
+            background: #102d34;
+        }
+
+        .footer-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-brand .brand-name strong {
+            color: white;
+        }
+
+        .footer-description {
+            max-width: 330px;
+            margin-top: 18px;
+
+            color: #91a8ac;
+            font-size: 12px;
+            line-height: 1.8;
+        }
+
+        footer h5 {
+            margin-bottom: 18px;
+            color: white;
+            font-size: 13px;
+        }
+
+        footer a {
+            display: block;
+            margin-bottom: 10px;
+            color: #91a8ac;
+            font-size: 11px;
+        }
+
+        footer a:hover {
+            color: white;
+        }
+
+        footer p {
+            color: #91a8ac;
+            font-size: 11px;
+        }
+
+        .footer-bottom {
+            min-height: 65px;
+            margin-top: 50px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 20px;
+
+            border-top: 1px solid rgba(255,255,255,.08);
+
+            color: #71898d;
+            font-size: 10px;
+        }
+
+
+        /* =========================================
+           TABLET
+        ========================================= */
+
+        @media (max-width: 991px) {
+
+            .navbar-collapse {
+                padding: 15px 0;
+            }
+
+            .nav-button {
+                display: inline-block;
+                margin-top: 10px;
+            }
+
+            .hero {
+                padding-top: 130px;
+            }
+
+            .hero-info-card {
+                margin: 20px auto 0;
+            }
+
+            .feature-content {
+                padding-left: 0;
+            }
+
+        }
+
+
+        /* =========================================
+           MOBILE
+        ========================================= */
+
+        @media (max-width: 767px) {
+
+            .hero {
+                min-height: auto;
+                padding: 120px 0 65px;
+
+                background:
+                    linear-gradient(
+                        rgba(241,249,250,.94),
+                        rgba(241,249,250,.97)
+                    ),
+                    url("https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1200&q=80");
+
+                background-size: cover;
+                background-position: center;
+            }
+
+            .hero h1 {
+                font-size: 46px;
+                letter-spacing: -1px;
+            }
+
+            .hero-description {
+                font-size: 14px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .hero-buttons a {
+                width: 100%;
+            }
+
+            .hero-info-card {
+                max-width: 100%;
+            }
+
+            .hero-image {
+                height: 210px;
+            }
+
+            .section {
+                padding: 70px 0;
+            }
+
+            .feature-image {
+                height: 300px;
+            }
+
+            .cta-box {
+                padding: 35px 25px;
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .white-btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            .footer-bottom {
+                padding: 20px 0;
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+        }
+
+
+        /* =========================================
+           SMALL MOBILE
+        ========================================= */
+
+        @media (max-width: 480px) {
+
+            .hero h1 {
+                font-size: 40px;
+            }
+
+            .brand-name strong {
+                font-size: 18px;
+            }
+
+            .brand-icon {
+                width: 38px;
+                height: 38px;
+            }
+
+            .stat-card strong {
+                font-size: 17px;
+            }
+
+            .stat-card span {
+                font-size: 9px;
+            }
+
+            .service-card {
+                padding: 25px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
+
+<nav class="navbar navbar-expand-lg fixed-top">
+
+    <div class="container">
+
+        <a class="navbar-brand" href="index.html">
+
+            <span class="brand-icon">
+                <i class="bi bi-heart-pulse-fill"></i>
+            </span>
+
+            <span class="brand-name">
+                <strong>MediCare</strong>
+                <small>PLUS</small>
+            </span>
+
+        </a>
+
+
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#mainNavbar">
+
+            <i class="bi bi-list"></i>
+
+        </button>
+
+
+        <div class="collapse navbar-collapse" id="mainNavbar">
+
+            <ul class="navbar-nav ms-auto align-items-lg-center">
+
+                <li class="nav-item">
+                    <a class="nav-link active"
+                       href="index.html">
+                        Home
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link"
+                       href="registration.html">
+                        Patient Registration
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link"
+                       href="appointments.html">
+                        Appointments
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link"
+                       href="health-information.html">
+                        Health Information
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link"
+                       href="services.html">
+                        Services
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link"
+                       href="technologies.html">
+                        Technologies
+                    </a>
+                </li>
+
+            </ul>
+
+
+            <a href="registration.html"
+               class="nav-button ms-lg-3">
+
+                <i class="bi bi-calendar-check me-1"></i>
+
+                Book Appointment
+
+            </a>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="hero">
+
+    <div class="container hero-content">
+
+        <div class="row align-items-center g-5">
+
+            <!-- LEFT -->
+
+            <div class="col-lg-7">
+
+                <span class="hero-label">
+
+                    <i class="bi bi-shield-check"></i>
+
+                    TRUSTED DIGITAL HEALTHCARE
+
+                </span>
+
+
+                <h1>
+
+                    Better Care.
+                    <br>
+
+                    <span>Better Health.</span>
+
+                </h1>
+
+
+                <p class="hero-description">
+
+                    Welcome to MediCare Plus, a responsive healthcare
+                    appointment and patient portal designed to make
+                    healthcare management simple, accessible and convenient.
+
+                </p>
+
+
+                <div class="hero-buttons">
+
+                    <a href="registration.html"
+                       class="primary-btn">
+
+                        <i class="bi bi-calendar-plus me-2"></i>
+
+                        Book an Appointment
+
+                    </a>
+
+
+                    <a href="services.html"
+                       class="outline-btn">
+
+                        Explore Services
+
+                        <i class="bi bi-arrow-right ms-2"></i>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- RIGHT -->
+
+            <div class="col-lg-5">
+
+                <div class="hero-info-card">
+
+                    <!-- REAL HEALTHCARE IMAGE -->
+
+                    <img
+                        class="hero-image"
+                        src="https://images.unsplash.com/photo-1584982751601-97dcc096659c?auto=format&fit=crop&w=900&q=85"
+                        alt="Healthcare professional providing patient care">
+
+
+                    <div class="doctor-info">
+
+                        <div class="doctor-icon">
+
+                            <i class="bi bi-person-heart"></i>
+
+                        </div>
+
+                        <div>
+
+                            <small>
+                                PATIENT-FIRST CARE
+                            </small>
+
+                            <strong>
+                                Your Healthcare Journey
+                            </strong>
+
+                            <span>
+                                Register • Book • Manage
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     STATS
+===================================================== -->
+
+<section class="stats">
+
+    <div class="container">
+
+        <div class="row g-4">
+
+            <div class="col-6 col-lg-3">
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        <i class="bi bi-people"></i>
+                    </div>
+
+                    <div>
+                        <strong>10K+</strong>
+                        <span>Patients</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-6 col-lg-3">
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        <i class="bi bi-person-badge"></i>
+                    </div>
+
+                    <div>
+                        <strong>50+</strong>
+                        <span>Doctors</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-6 col-lg-3">
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        <i class="bi bi-hospital"></i>
+                    </div>
+
+                    <div>
+                        <strong>15+</strong>
+                        <span>Departments</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-6 col-lg-3">
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        <i class="bi bi-clock-history"></i>
+                    </div>
+
+                    <div>
+                        <strong>24/7</strong>
+                        <span>Healthcare Support</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     SERVICES
+===================================================== -->
+
+<section class="section">
+
+    <div class="container">
+
+        <div class="text-center">
+
+            <span class="section-label">
+                PATIENT PORTAL
+            </span>
+
+            <h2 class="section-title">
+
+                Healthcare Services
+                <span>Made Simple</span>
+
+            </h2>
+
+            <p class="section-description">
+
+                Access essential patient services through one
+                clean and responsive healthcare portal.
+
+            </p>
+
+        </div>
+
+
+        <div class="row g-4 mt-4">
+
+
+            <div class="col-md-6 col-lg-4">
+
+                <div class="service-card">
+
+                    <div class="service-icon">
+
+                        <i class="bi bi-person-plus"></i>
+
+                    </div>
+
+                    <h3>
+                        Patient Registration
+                    </h3>
+
+                    <p>
+                        Enter patient details, medical information
+                        and appointment preferences through a
+                        structured registration form.
+                    </p>
+
+                    <a href="registration.html">
+                        Register Patient →
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-6 col-lg-4">
+
+                <div class="service-card">
+
+                    <div class="service-icon purple">
+
+                        <i class="bi bi-calendar2-check"></i>
+
+                    </div>
+
+                    <h3>
+                        Appointment Management
+                    </h3>
+
+                    <p>
+                        View appointment ID, doctor, department,
+                        date, time and appointment status in one place.
+                    </p>
+
+                    <a href="appointments.html">
+                        View Appointments →
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-6 col-lg-4">
+
+                <div class="service-card">
+
+                    <div class="service-icon orange">
+
+                        <i class="bi bi-clipboard2-pulse"></i>
+
+                    </div>
+
+                    <h3>
+                        Health Information
+                    </h3>
+
+                    <p>
+                        View important patient health information
+                        including blood group, symptoms and doctor details.
+                    </p>
+
+                    <a href="health-information.html">
+                        View Health Info →
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-6 col-lg-4">
+
+                <div class="service-card">
+
+                    <div class="service-icon green">
+
+                        <i class="bi bi-heart-pulse"></i>
+
+                    </div>
+
+                    <h3>
+                        Medical Departments
+                    </h3>
+
+                    <p>
+                        Explore healthcare departments and
+                        available medical services.
+                    </p>
+
+                    <a href="services.html">
+                        Explore Services →
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-6 col-lg-4">
+
+                <div class="service-card">
+
+                    <div class="service-icon">
+
+                        <i class="bi bi-laptop"></i>
+
+                    </div>
+
+                    <h3>
+                        Digital Healthcare
+                    </h3>
+
+                    <p>
+                        Learn how HTML5, CSS3 and Bootstrap 5
+                        are used to build this responsive portal.
+                    </p>
+
+                    <a href="technologies.html">
+                        View Technologies →
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-6 col-lg-4">
+
+                <div class="service-card">
+
+                    <div class="service-icon purple">
+
+                        <i class="bi bi-shield-check"></i>
+
+                    </div>
+
+                    <h3>
+                        Patient-Centered Design
+                    </h3>
+
+                    <p>
+                        Clean layouts, responsive components and
+                        accessible forms create a user-friendly experience.
+                    </p>
+
+                    <a href="registration.html">
+                        Get Started →
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FEATURE SECTION
+===================================================== -->
+
+<section class="section feature-section">
+
+    <div class="container">
+
+        <div class="row align-items-center g-5">
+
+            <div class="col-lg-6">
+
+                <img
+                    class="feature-image"
+                    src="https://images.unsplash.com/photo-1551076805-e1869033e561?auto=format&fit=crop&w=1100&q=85"
+                    alt="Modern hospital healthcare environment">
+
+            </div>
+
+
+            <div class="col-lg-6">
+
+                <div class="feature-content">
+
+                    <span class="section-label">
+                        SMART PATIENT EXPERIENCE
+                    </span>
+
+                    <h2 class="section-title">
+
+                        Everything You Need
+                        <span>In One Portal</span>
+
+                    </h2>
+
+
+                    <p class="mt-3 text-secondary">
+
+                        From registering as a patient to checking
+                        appointments and viewing health information,
+                        the portal provides a simple digital experience.
+
+                    </p>
+
+
+                    <ul class="feature-list">
+
+                        <li>
+                            <i class="bi bi-check-circle-fill"></i>
+                            Easy patient registration
+                        </li>
+
+                        <li>
+                            <i class="bi bi-check-circle-fill"></i>
+                            Structured appointment information
+                        </li>
+
+                        <li>
+                            <i class="bi bi-check-circle-fill"></i>
+                            Organized health information
+                        </li>
+
+                        <li>
+                            <i class="bi bi-check-circle-fill"></i>
+                            Responsive Bootstrap components
+                        </li>
+
+                        <li>
+                            <i class="bi bi-check-circle-fill"></i>
+                            Mobile, tablet and desktop friendly
+                        </li>
+
+                    </ul>
+
+
+                    <a href="registration.html"
+                       class="primary-btn">
+
+                        Start Patient Registration
+
+                        <i class="bi bi-arrow-right ms-2"></i>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CTA
+===================================================== -->
+
+<section class="cta">
+
+    <div class="container">
+
+        <div class="cta-box">
+
+            <div>
+
+                <small>
+                    YOUR HEALTH MATTERS
+                </small>
+
+                <h2>
+                    Begin your healthcare
+                    journey today.
+                </h2>
+
+                <p>
+                    Register your details and schedule an appointment.
+                </p>
+
+            </div>
+
+
+            <a href="registration.html"
+               class="white-btn">
+
+                Register as Patient
+
+                <i class="bi bi-arrow-right ms-2"></i>
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+    <div class="container">
+
+        <div class="row g-5">
+
+            <div class="col-lg-5">
+
+                <div class="footer-brand">
+
+                    <span class="brand-icon">
+
+                        <i class="bi bi-heart-pulse-fill"></i>
+
+                    </span>
+
+                    <span class="brand-name">
+
+                        <strong>MediCare</strong>
+                        <small>PLUS</small>
+
+                    </span>
+
+                </div>
+
+
+                <p class="footer-description">
+
+                    A responsive Healthcare Appointment &
+                    Patient Portal developed using HTML5,
+                    CSS3 and Bootstrap 5.
+
+                </p>
+
+            </div>
+
+
+            <div class="col-6 col-lg-2">
+
+                <h5>
+                    Portal
+                </h5>
+
+                <a href="index.html">
+                    Home
+                </a>
+
+                <a href="registration.html">
+                    Registration
+                </a>
+
+                <a href="appointments.html">
+                    Appointments
+                </a>
+
+            </div>
+
+
+            <div class="col-6 col-lg-2">
+
+                <h5>
+                    Information
+                </h5>
+
+                <a href="health-information.html">
+                    Health Information
+                </a>
+
+                <a href="services.html">
+                    Services
+                </a>
+
+                <a href="technologies.html">
+                    Technologies
+                </a>
+
+            </div>
+
+
+            <div class="col-lg-3">
+
+                <h5>
+                    Contact
+                </h5>
+
+                <p>
+                    <i class="bi bi-envelope me-2"></i>
+                    support@medicareplus.com
+                </p>
+
+                <p>
+                    <i class="bi bi-telephone me-2"></i>
+                    +91 98765 43210
+                </p>
+
+                <p>
+                    <i class="bi bi-clock me-2"></i>
+                    Support available 24/7
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <span>
+                © 2026 MediCare Plus
+            </span>
+
+            <span>
+                Healthcare Appointment & Patient Portal
+            </span>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+
+<!-- Bootstrap JS -->
+
+<script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+</script>
+
+
+</body>
+</html>

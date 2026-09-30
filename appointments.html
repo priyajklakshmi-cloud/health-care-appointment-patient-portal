@@ -1,0 +1,1138 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Appointments | MediCare Plus</title>
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "DM Sans", sans-serif;
+            background: #f4f9f9;
+            color: #183b43;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        .navbar {
+            background: rgba(255,255,255,0.98);
+            box-shadow: 0 4px 20px rgba(20,70,75,0.08);
+            padding: 15px 0;
+        }
+
+        .navbar-brand {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #087f8c !important;
+        }
+
+        .navbar-brand i {
+            margin-right: 7px;
+        }
+
+        .nav-link {
+            color: #38555b !important;
+            font-weight: 500;
+            margin: 0 5px;
+            transition: 0.3s;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: #087f8c !important;
+        }
+
+        /* ================= HERO ================= */
+
+        .page-hero {
+            min-height: 330px;
+            display: flex;
+            align-items: center;
+
+            background:
+                linear-gradient(
+                    rgba(5,55,65,0.80),
+                    rgba(5,55,65,0.80)
+                ),
+                url("https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1800&q=85")
+                center/cover;
+
+            color: white;
+        }
+
+        .hero-content {
+            max-width: 780px;
+        }
+
+        .hero-content h1 {
+            font-family: "Playfair Display", serif;
+            font-size: 3.2rem;
+            margin-bottom: 15px;
+        }
+
+        .hero-content p {
+            font-size: 1.08rem;
+            color: #e0eeee;
+            line-height: 1.7;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.25);
+            padding: 8px 16px;
+            border-radius: 30px;
+            margin-bottom: 18px;
+        }
+
+        /* ================= MAIN ================= */
+
+        .main-section {
+            padding: 70px 0;
+        }
+
+        .section-title {
+            font-family: "Playfair Display", serif;
+            color: #123e47;
+            font-size: 2.25rem;
+        }
+
+        .section-subtitle {
+            color: #71878c;
+        }
+
+        /* ================= SUMMARY CARDS ================= */
+
+        .summary-card {
+            background: white;
+            border-radius: 18px;
+            padding: 23px;
+            border: 1px solid #e4eeee;
+            box-shadow: 0 10px 30px rgba(20,70,75,0.06);
+            height: 100%;
+            transition: 0.3s;
+        }
+
+        .summary-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(20,70,75,0.10);
+        }
+
+        .summary-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 13px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #e4f6f6;
+            color: #087f8c;
+            font-size: 1.35rem;
+            margin-bottom: 15px;
+        }
+
+        .summary-card h5 {
+            font-weight: 700;
+            color: #17434b;
+        }
+
+        .summary-number {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #087f8c;
+        }
+
+        .summary-card p {
+            margin: 0;
+            color: #7b9094;
+            font-size: 0.88rem;
+        }
+
+        /* ================= APPOINTMENT TABLE ================= */
+
+        .appointment-card {
+            background: white;
+            border-radius: 22px;
+            padding: 30px;
+            margin-top: 35px;
+            box-shadow: 0 15px 45px rgba(18,65,72,0.08);
+            border: 1px solid #e5eeee;
+        }
+
+        .table-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .table-heading h3 {
+            font-family: "Playfair Display", serif;
+            color: #123e47;
+            margin: 0;
+        }
+
+        .search-box {
+            position: relative;
+            width: 260px;
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 13px;
+            top: 14px;
+            color: #82979b;
+        }
+
+        .search-box input {
+            width: 100%;
+            height: 45px;
+            border: 1px solid #d9e6e7;
+            border-radius: 10px;
+            padding-left: 38px;
+            outline: none;
+        }
+
+        .search-box input:focus {
+            border-color: #087f8c;
+            box-shadow: 0 0 0 3px rgba(8,127,140,0.08);
+        }
+
+        .table-responsive {
+            border-radius: 14px;
+        }
+
+        .appointment-table {
+            margin-bottom: 0;
+            vertical-align: middle;
+        }
+
+        .appointment-table thead th {
+            background: #eef7f7;
+            color: #36565d;
+            border: none;
+            padding: 16px;
+            font-size: 0.85rem;
+            white-space: nowrap;
+        }
+
+        .appointment-table tbody td {
+            padding: 17px 16px;
+            border-color: #edf2f2;
+            color: #526d73;
+            font-size: 0.88rem;
+        }
+
+        .appointment-table tbody tr:hover {
+            background: #fafdfd;
+        }
+
+        .patient-name {
+            color: #17434b;
+            font-weight: 700;
+        }
+
+        .doctor-name {
+            color: #087f8c;
+            font-weight: 600;
+        }
+
+        .appointment-id {
+            font-weight: 700;
+            color: #647c81;
+        }
+
+        /* STATUS */
+
+        .status {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 7px 12px;
+            border-radius: 20px;
+            font-size: 0.76rem;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .status-confirmed {
+            background: #e5f7ed;
+            color: #21804d;
+        }
+
+        .status-pending {
+            background: #fff5dc;
+            color: #a16b00;
+        }
+
+        .status-completed {
+            background: #e8f0fb;
+            color: #37699c;
+        }
+
+        .status-cancelled {
+            background: #fdeaea;
+            color: #b94a48;
+        }
+
+        /* ================= INFO BANNER ================= */
+
+        .info-banner {
+            margin-top: 30px;
+            background: #123f47;
+            border-radius: 20px;
+            overflow: hidden;
+            color: white;
+        }
+
+        .info-image {
+            height: 100%;
+            min-height: 230px;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .info-content {
+            padding: 35px;
+        }
+
+        .info-content h3 {
+            font-family: "Playfair Display", serif;
+            font-size: 1.8rem;
+            margin-bottom: 12px;
+        }
+
+        .info-content p {
+            color: #c7dcdf;
+            line-height: 1.7;
+        }
+
+        .info-list {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0 0;
+        }
+
+        .info-list li {
+            margin-bottom: 10px;
+            color: #d8e8e9;
+        }
+
+        .info-list i {
+            color: #74dddd;
+            margin-right: 8px;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: #0b3037;
+            color: #c7d9dc;
+            padding: 45px 0 20px;
+        }
+
+        .footer-brand {
+            color: white;
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .footer-title {
+            color: white;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 9px;
+        }
+
+        .footer-links a {
+            color: #c7d9dc;
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: #72d8d8;
+        }
+
+        .copyright {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: 30px;
+            padding-top: 20px;
+            text-align: center;
+            font-size: 0.82rem;
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 991px) {
+
+            .navbar-nav {
+                padding-top: 15px;
+            }
+
+            .nav-link {
+                margin: 5px 0;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .table-heading {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .search-box {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 576px) {
+
+            .page-hero {
+                min-height: 280px;
+            }
+
+            .hero-content h1 {
+                font-size: 2.1rem;
+            }
+
+            .main-section {
+                padding: 45px 0;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .appointment-card {
+                padding: 18px;
+                border-radius: 16px;
+            }
+
+            .info-content {
+                padding: 25px;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+<!-- ================= NAVBAR ================= -->
+
+<nav class="navbar navbar-expand-lg sticky-top">
+
+    <div class="container">
+
+        <a class="navbar-brand" href="index.html">
+            <i class="bi bi-heart-pulse-fill"></i>
+            MediCare Plus
+        </a>
+
+
+        <button class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#mainNavbar">
+
+            <span class="navbar-toggler-icon"></span>
+
+        </button>
+
+
+        <div class="collapse navbar-collapse" id="mainNavbar">
+
+            <ul class="navbar-nav ms-auto align-items-lg-center">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">
+                        Home
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="registration.html">
+                        Patient Registration
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link active" href="appointments.html">
+                        Appointments
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="health-information.html">
+                        Health Information
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="services.html">
+                        Services
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="technologies.html">
+                        Technologies
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+
+<!-- ================= HERO ================= -->
+
+<section class="page-hero">
+
+    <div class="container">
+
+        <div class="hero-content">
+
+            <span class="hero-badge">
+                <i class="bi bi-calendar2-check me-2"></i>
+                Appointment Management
+            </span>
+
+            <h1>
+                Manage Your Appointments
+            </h1>
+
+            <p>
+                View appointment schedules, doctor information,
+                departments and appointment status through your
+                personalized healthcare portal.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= MAIN ================= -->
+
+<section class="main-section">
+
+    <div class="container">
+
+        <div class="text-center mb-5">
+
+            <h2 class="section-title">
+                Appointment Overview
+            </h2>
+
+            <p class="section-subtitle">
+                Keep track of your upcoming and previous healthcare appointments.
+            </p>
+
+        </div>
+
+
+
+        <!-- SUMMARY CARDS -->
+
+        <div class="row g-4">
+
+            <div class="col-md-6 col-lg-3">
+
+                <div class="summary-card">
+
+                    <div class="summary-icon">
+                        <i class="bi bi-calendar-event"></i>
+                    </div>
+
+                    <div class="summary-number">
+                        04
+                    </div>
+
+                    <h5>
+                        Total Appointments
+                    </h5>
+
+                    <p>
+                        Appointments registered in the portal
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-6 col-lg-3">
+
+                <div class="summary-card">
+
+                    <div class="summary-icon">
+                        <i class="bi bi-calendar-check"></i>
+                    </div>
+
+                    <div class="summary-number">
+                        02
+                    </div>
+
+                    <h5>
+                        Confirmed
+                    </h5>
+
+                    <p>
+                        Upcoming confirmed appointments
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-6 col-lg-3">
+
+                <div class="summary-card">
+
+                    <div class="summary-icon">
+                        <i class="bi bi-hourglass-split"></i>
+                    </div>
+
+                    <div class="summary-number">
+                        01
+                    </div>
+
+                    <h5>
+                        Pending
+                    </h5>
+
+                    <p>
+                        Appointment awaiting confirmation
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-6 col-lg-3">
+
+                <div class="summary-card">
+
+                    <div class="summary-icon">
+                        <i class="bi bi-check2-circle"></i>
+                    </div>
+
+                    <div class="summary-number">
+                        01
+                    </div>
+
+                    <h5>
+                        Completed
+                    </h5>
+
+                    <p>
+                        Previously completed appointments
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- APPOINTMENT TABLE -->
+
+        <div class="appointment-card">
+
+            <div class="table-heading">
+
+                <div>
+
+                    <h3>
+                        Appointment Schedule
+                    </h3>
+
+                    <p class="text-muted mb-0 mt-1">
+                        Current patient appointment records
+                    </p>
+
+                </div>
+
+
+                <div class="search-box">
+
+                    <i class="bi bi-search"></i>
+
+                    <input type="text"
+                           id="searchInput"
+                           placeholder="Search appointments...">
+
+                </div>
+
+            </div>
+
+
+            <div class="table-responsive">
+
+                <table class="table appointment-table">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Appointment ID</th>
+
+                            <th>Patient Name</th>
+
+                            <th>Department</th>
+
+                            <th>Doctor</th>
+
+                            <th>Date</th>
+
+                            <th>Time</th>
+
+                            <th>Status</th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="appointmentTable">
+
+                        <tr>
+
+                            <td class="appointment-id">
+                                AP-1001
+                            </td>
+
+                            <td class="patient-name">
+                                Ananya Krishnan
+                            </td>
+
+                            <td>
+                                Cardiology
+                            </td>
+
+                            <td class="doctor-name">
+                                Dr. Arjun Kumar
+                            </td>
+
+                            <td>
+                                05 Oct 2026
+                            </td>
+
+                            <td>
+                                10:30 AM
+                            </td>
+
+                            <td>
+                                <span class="status status-confirmed">
+                                    <i class="bi bi-check-circle-fill"></i>
+                                    Confirmed
+                                </span>
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td class="appointment-id">
+                                AP-1002
+                            </td>
+
+                            <td class="patient-name">
+                                Rahul Sharma
+                            </td>
+
+                            <td>
+                                Neurology
+                            </td>
+
+                            <td class="doctor-name">
+                                Dr. Priya Sharma
+                            </td>
+
+                            <td>
+                                07 Oct 2026
+                            </td>
+
+                            <td>
+                                11:00 AM
+                            </td>
+
+                            <td>
+                                <span class="status status-pending">
+                                    <i class="bi bi-clock-fill"></i>
+                                    Pending
+                                </span>
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td class="appointment-id">
+                                AP-1003
+                            </td>
+
+                            <td class="patient-name">
+                                Meera Raj
+                            </td>
+
+                            <td>
+                                Dermatology
+                            </td>
+
+                            <td class="doctor-name">
+                                Dr. Ananya Rao
+                            </td>
+
+                            <td>
+                                10 Oct 2026
+                            </td>
+
+                            <td>
+                                02:30 PM
+                            </td>
+
+                            <td>
+                                <span class="status status-confirmed">
+                                    <i class="bi bi-check-circle-fill"></i>
+                                    Confirmed
+                                </span>
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td class="appointment-id">
+                                AP-1004
+                            </td>
+
+                            <td class="patient-name">
+                                Karthik Kumar
+                            </td>
+
+                            <td>
+                                Orthopedics
+                            </td>
+
+                            <td class="doctor-name">
+                                Dr. Rahul Menon
+                            </td>
+
+                            <td>
+                                28 Sep 2026
+                            </td>
+
+                            <td>
+                                09:30 AM
+                            </td>
+
+                            <td>
+                                <span class="status status-completed">
+                                    <i class="bi bi-check2-all"></i>
+                                    Completed
+                                </span>
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td class="appointment-id">
+                                AP-1005
+                            </td>
+
+                            <td class="patient-name">
+                                Divya Priya
+                            </td>
+
+                            <td>
+                                General Medicine
+                            </td>
+
+                            <td class="doctor-name">
+                                Dr. Meera Krishnan
+                            </td>
+
+                            <td>
+                                12 Oct 2026
+                            </td>
+
+                            <td>
+                                04:00 PM
+                            </td>
+
+                            <td>
+                                <span class="status status-cancelled">
+                                    <i class="bi bi-x-circle-fill"></i>
+                                    Cancelled
+                                </span>
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- INFORMATION BANNER -->
+
+        <div class="info-banner">
+
+            <div class="row g-0 align-items-center">
+
+                <div class="col-lg-5">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1584982751601-97dcc096659c?auto=format&fit=crop&w=1000&q=85"
+                        alt="Doctor consultation"
+                        class="info-image">
+
+                </div>
+
+
+                <div class="col-lg-7">
+
+                    <div class="info-content">
+
+                        <h3>
+                            Prepare For Your Appointment
+                        </h3>
+
+                        <p>
+                            Make your healthcare visit easier by keeping
+                            your medical information, previous reports and
+                            appointment details ready before meeting your doctor.
+                        </p>
+
+
+                        <ul class="info-list">
+
+                            <li>
+                                <i class="bi bi-check-circle-fill"></i>
+                                Carry your previous medical reports
+                            </li>
+
+                            <li>
+                                <i class="bi bi-check-circle-fill"></i>
+                                Arrive at least 15 minutes early
+                            </li>
+
+                            <li>
+                                <i class="bi bi-check-circle-fill"></i>
+                                Keep your patient information updated
+                            </li>
+
+                            <li>
+                                <i class="bi bi-check-circle-fill"></i>
+                                Bring your valid identification document
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <div class="container">
+
+        <div class="row g-4">
+
+            <div class="col-lg-5">
+
+                <div class="footer-brand">
+                    <i class="bi bi-heart-pulse-fill me-2"></i>
+                    MediCare Plus
+                </div>
+
+                <p>
+                    A modern healthcare appointment and patient portal
+                    designed to make healthcare management simpler,
+                    faster and more accessible.
+                </p>
+
+            </div>
+
+
+            <div class="col-md-3">
+
+                <div class="footer-title">
+                    Quick Links
+                </div>
+
+                <ul class="footer-links">
+
+                    <li>
+                        <a href="index.html">Home</a>
+                    </li>
+
+                    <li>
+                        <a href="registration.html">Registration</a>
+                    </li>
+
+                    <li>
+                        <a href="appointments.html">Appointments</a>
+                    </li>
+
+                    <li>
+                        <a href="health-information.html">
+                            Health Information
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <div class="col-md-4">
+
+                <div class="footer-title">
+                    Contact
+                </div>
+
+                <p>
+                    <i class="bi bi-geo-alt me-2"></i>
+                    24 Healthcare Avenue, Chennai
+                </p>
+
+                <p>
+                    <i class="bi bi-telephone me-2"></i>
+                    +91 98765 43210
+                </p>
+
+                <p>
+                    <i class="bi bi-envelope me-2"></i>
+                    care@medicareplus.com
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="copyright">
+            © 2026 MediCare Plus. All Rights Reserved.
+        </div>
+
+    </div>
+
+</footer>
+
+
+
+<!-- Bootstrap JS -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+
+<!-- SEARCH FUNCTION -->
+
+<script>
+
+    const searchInput = document.getElementById("searchInput");
+
+    const rows = document.querySelectorAll("#appointmentTable tr");
+
+
+    searchInput.addEventListener("keyup", function() {
+
+        const searchValue =
+            this.value.toLowerCase().trim();
+
+
+        rows.forEach(function(row) {
+
+            const rowText =
+                row.innerText.toLowerCase();
+
+
+            if (rowText.includes(searchValue)) {
+
+                row.style.display = "";
+
+            } else {
+
+                row.style.display = "none";
+
+            }
+
+        });
+
+    });
+
+</script>
+
+</body>
+</html>
+```
